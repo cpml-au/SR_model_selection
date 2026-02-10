@@ -2,7 +2,15 @@ import numpy as np
 
 from sklearn.ensemble import RandomForestRegressor
 
-from optimize import _fit_params_lm, _predict
+from optimize import evaluate_model, optimise_parameters
+
+
+def _predict(f_np, X, params):
+    y_pred = evaluate_model(f_np, params, X)
+    bad = (~np.isfinite(y_pred)) | (np.abs(y_pred) > 1e150)
+    if bad.any():
+        y_pred = np.where(bad, 1e150, y_pred)
+    return y_pred
 
 
 def calc_Err_in_sympy(
@@ -21,7 +29,7 @@ def calc_Err_in_sympy(
 
     rng = np.random.default_rng(random_state)
 
-    params_hat = _fit_params_lm(f_np, param_syms, params_vals_org, X, y, sigma)
+    params_hat = optimise_parameters(f_np, param_syms, params_vals_org, X, y, sigma)
     mu_hat = _predict(f_np, X, params_hat)
     resid = y - mu_hat
     n = len(y)
@@ -57,7 +65,7 @@ def calc_Err_in_sympy(
             eps_b = rng.normal(0.0, sigma_hat, size=n)
             y_b = m_big + eps_b
 
-        params_b = _fit_params_lm(f_np, param_syms, params_vals_org, X, y_b, sigma)
+        params_b = optimise_parameters(f_np, param_syms, params_vals_org, X, y_b, sigma)
         mu_b = _predict(f_np, X, params_b)
 
         y_star[:, b], mu_star[:, b] = y_b, mu_b
