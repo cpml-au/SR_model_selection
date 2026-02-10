@@ -1,8 +1,8 @@
-# Symbolic Regression Model Selection
+# Model Selection for Symbolic Regression
 
 This repository contains the code used to generate results for the paper "A Comparative Study of Model Selection Criteria for Symbolic Regression".
 
-## 1) Dataset Construction
+### 1) Dataset Construction
 
 ```bash
 cd src
@@ -11,7 +11,7 @@ python generate_datasets.py
 
 Datasets are written to `src/data`.
 
-## 2) Symbolic Model Generation
+### 2) Symbolic Model Generation
 
 Generate perturbed models from a ground-truth function:
 
@@ -38,7 +38,7 @@ chmod +x export_pop_all.sh
 
 Outputs are `.operon` files named `<function>_<mutations>_<features>.operon` in `src/functions`.
 
-## 3) Compute Selection Metrics
+### 3) Compute Selection Metrics
 
 Compute metrics for one or more functions:
 
@@ -54,7 +54,7 @@ Example:
 python compute_metrics.py f1
 ```
 
-## 4) Evaluate Metric Performance
+### 4) Evaluate Metric Performance
 
 ```bash
 python eval_modelsel.py <k> <results_csv> <test_column>
@@ -79,7 +79,7 @@ chmod +x eval_modelsel.sh
 
 Outputs are saved to `results/`.
 
-## 5) Plot Results
+### 5) Plot Results
 
 ```bash
 python perf_plot.py
