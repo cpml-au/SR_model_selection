@@ -159,11 +159,18 @@ def main(n_mutations, n_features, function_name):
         for inds in populations
     ]
     print("Expression generation finished")
+    functions_dir = pathlib.Path("functions")
+    functions_dir.mkdir(parents=True, exist_ok=True)
+    results_dir = pathlib.Path("results")
+    results_dir.mkdir(parents=True, exist_ok=True)
     path = export_operon(
-        populations_list, pset, f"{function_name}_{n_mutations}_{n_features}.operon"
+        populations_list,
+        pset,
+        functions_dir / f"{function_name}_{n_mutations}_{n_features}.operon",
     )
     path_info = export_other_info(
-        populations_values_list, f"{function_name}_{n_mutations}_{n_features}.txt"
+        populations_values_list,
+        results_dir / f"{function_name}_{n_mutations}_{n_features}.txt",
     )
     print(f"Expressions saved in: {path}")
     print(f"Expressions saved in: {path_info}")

@@ -36,7 +36,7 @@ chmod +x export_pop_all.sh
 ./export_pop_all.sh
 ```
 
-Outputs are `.operon` files named `<function>_<mutations>_<features>.operon`.
+Outputs are `.operon` files named `<function>_<mutations>_<features>.operon` in `src/functions`.
 
 ## 3) Compute Selection Metrics
 
