@@ -21,13 +21,13 @@ np.random.seed(42)
 n_points = 10100
 n_level = 0.1
 models_path = {
-    "f1": "f1_100_10.operon",
-    "f2": "f2_100_2.operon",
-    "f3": "f3_100_1.operon",
-    "f4": "f4_100_2.operon",
-    "f5": "f5_100_3.operon",
-    "f6": "f6_100_2.operon",
-    "f7": "f7_100_2.operon",
+    "f1": "functions/f1_100_10.operon",
+    "f2": "functions/f2_100_2.operon",
+    "f3": "functions/f3_100_1.operon",
+    "f4": "functions/f4_100_2.operon",
+    "f5": "functions/f5_100_3.operon",
+    "f6": "functions/f6_100_2.operon",
+    "f7": "functions/f7_100_2.operon",
 }
 
 
